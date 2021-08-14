@@ -7,8 +7,22 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var portfolioRouter = require('./routes/portfolio');
 var typeRouter = require('./routes/type');
+var certificationRouter = require('./routes/certification');
+var educationRouter = require('./routes/education');
 
 var app = express();
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  database : '*****',
+  user     : '*****',
+  password : '*****',
+  port: '*****'
+});
+connection.connect();
+
+global.connection = connection;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/portfolio', portfolioRouter);
 app.use('/api/type', typeRouter);
+app.use('/api/certification', certificationRouter);
+app.use('/api/education', educationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
