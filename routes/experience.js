@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
-    global.connection.query('SELECT id, institution_name, institution_image, institution_url, title, description, period_start, period_end FROM education ', function(err, rows, fields) {
+    global.connection.query('SELECT id, company_name, company_image, company_url, position, description, period_start, period_end FROM experience ', function(err, rows, fields) {
       if (err) throw err;
       res.status(200).json({sucess: true, data: rows});
     });

@@ -9,16 +9,17 @@ var portfolioRouter = require('./routes/portfolio');
 var typeRouter = require('./routes/type');
 var certificationRouter = require('./routes/certification');
 var educationRouter = require('./routes/education');
+var experienceRouter = require('./routes/experience');
 
 var app = express();
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  database : '*****',
-  user     : '*****',
-  password : '*****',
-  port: '*****'
+  database : 'personal_website',
+  user     : 'romario',
+  password : 'innovahora',
+  port: '3303'
 });
 connection.connect();
 
@@ -44,6 +45,7 @@ app.use('/api/portfolio', portfolioRouter);
 app.use('/api/type', typeRouter);
 app.use('/api/certification', certificationRouter);
 app.use('/api/education', educationRouter);
+app.use('/api/experience', experienceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
