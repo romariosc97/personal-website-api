@@ -16,10 +16,10 @@ var app = express();
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  database : 'personal_website',
-  user     : 'romario',
-  password : 'innovahora',
-  port: '3303'
+  database : '****',
+  user     : '****',
+  password : '****',
+  port: '****'
 });
 connection.connect();
 
