@@ -11,16 +11,12 @@ var certificationRouter = require('./routes/certification');
 var educationRouter = require('./routes/education');
 var experienceRouter = require('./routes/experience');
 
+var database = require('./config/database');
+
 var app = express();
 
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  database : '****',
-  user     : '****',
-  password : '****',
-  port: '****'
-});
+var connection = mysql.createConnection(database);
 connection.connect();
 
 global.connection = connection;
@@ -31,7 +27,7 @@ app.set('view engine', 'jade');
 
 var cors = require('cors');
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: ['http://localhost:3000', 'http://localhost:3006']
 }));
 
 app.use(logger('dev'));
