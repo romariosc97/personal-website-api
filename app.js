@@ -29,7 +29,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 var cors = require('cors');
-console.log()
 app.use(cors({
   origin: process.env.ALLOWED_HOSTS.split(",")
 }));
