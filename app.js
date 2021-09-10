@@ -10,10 +10,12 @@ var typeRouter = require('./routes/type');
 var certificationRouter = require('./routes/certification');
 var educationRouter = require('./routes/education');
 var experienceRouter = require('./routes/experience');
+var fileUpload = require('express-fileupload');
 
 var database = require('./config/database');
 
 var app = express();
+app.use(fileUpload({ createParentPath: true }));
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection(database);
@@ -31,6 +33,7 @@ app.use(cors({
 }));
 
 app.use(logger('dev'));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
