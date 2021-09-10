@@ -42,7 +42,7 @@ router.post('/', async (req, res, next) => {
     let image = `public/images/projects/${req.files.image.name}`;
     global.connection.query(`INSERT INTO projects (name, short_description, description, development, project_type_id, image, created_by) VALUES ("${req.body.name}", "${req.body.short_description}", "${req.body.description}", "${req.body.development}", ${req.body.project_type_id}, "${image}", 1)`, (err, rows, fields) =>  {
       if (err) throw err;
-      req.files.image.mv(`public/images/projects/${req.files.image.name}`);
+      req.files.image.mv(`images/projects/${req.files.image.name}`);
       res.status(200).json({success: true, data: rows});
     });
     
